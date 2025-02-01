@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prix du CT20</title>
+    <script>
+        async function getPrice() {
+            const response = await fetch("https://api.uniswap.org/v1/quote?tokenIn=ETH&tokenOut=0xFd655eB8fB0296DeeBFdFdc18a05a522186985e1");
+            const data = await response.json();
+            document.getElementById("price").innerText = data.price ? data.price + " ETH" : "Prix non disponible";
+        }
+        window.onload = getPrice;
+    </script>
+</head>
+<body>
+    <h1>Prix du CT20</h1>
+    <p>Le prix actuel de Cryptonia20 (CT20) est : <strong id="price">Chargement...</strong></p>
+</body>
+</html>
