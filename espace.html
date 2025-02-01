@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptonia20 - Page d'accueil</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fond spatial */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.nasa.gov/sites/default/files/thumbnails/space.jpg?itok=2yWwPE3y') no-repeat center center fixed;
+            background-size: cover;
+            animation: spaceMove 100s infinite linear;
+        }
+
+        /* Animation des étoiles */
+        @keyframes spaceMove {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 100%;
+            }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 4px 4px;
+            animation: starsAnimation 60s linear infinite;
+        }
+
+        @keyframes starsAnimation {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        /* Planètes et lunes */
+        .planet {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: planetOrbit 10s infinite linear;
+        }
+
+        .planet-1 {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 10%;
+            animation-duration: 15s;
+        }
+
+        .planet-2 {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            left: 70%;
+            animation-duration: 20s;
+        }
+
+        /* Animation de la planète */
+        @keyframes planetOrbit {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <!-- Animations des étoiles -->
+        <div class="stars"></div>
+        <!-- Planètes et lunes -->
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+    </div>
+    <div style="position: relative; z-index: 1; color: white; text-align: center; padding-top: 20%;">
+        <h1>Bienvenue sur Cryptonia20</h1>
+        <p>Un voyage dans l'univers de la crypto-monnaie.</p>
+    </div>
+</body>
+</html>
