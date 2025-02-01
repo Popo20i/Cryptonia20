@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptonia20</title>
+    <style>
+        /* Fond spatial animé */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: black;
+            overflow: hidden;
+        }
+
+        /* Conteneur principal */
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 50px;
+        }
+
+        /* Titre stylisé */
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px cyan, 0 0 20px blue;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.5;
+        }
+
+        /* Bouton Uniswap */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background: linear-gradient(45deg, cyan, blue);
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 0 15px cyan;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 25px white;
+        }
+
+        /* Animation des étoiles */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/YKYD2Er.png') repeat;
+            animation: moveStars 50s linear infinite;
+        }
+
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+
+        /* Animation des planètes */
+        .planet {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, orange, red);
+            border-radius: 50%;
+            top: 20%;
+            left: 80%;
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+            animation: movePlanet 10s linear infinite alternate;
+        }
+
+        @keyframes movePlanet {
+            from { transform: translateY(0px); }
+            to { transform: translateY(50px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div> <!-- Fond animé -->
+    <div class="planet"></div> <!-- Planète animée -->
+
+    <div class="container">
+        <h1>Bienvenue sur Cryptonia20</h1>
+        <p>Cryptonia20 est un projet innovant dans l'univers de la crypto-monnaie. Rejoignez notre révolution et participez à notre aventure intergalactique.</p>
+        <a href="https://app.uniswap.org/#/swap?outputCurrency=0xFd655eB8fB0296DeeBFdFdc18a05a522186985e1" class="btn">Acheter sur Uniswap</a>
+    </div>
+</body>
+</html>
