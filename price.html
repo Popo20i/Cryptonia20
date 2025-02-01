@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prix du CT20</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Prix actuel de CT20 sur Uniswap</h1>
+    <p>Le prix actuel de Cryptonia20 (CT20) est :</p>
+    <div id="price">Chargement...</div>
+
+    <script>
+        async function fetchPrice() {
+            const contractAddress = "0xFd655eB8fB0296DeeBFdFdc18a05a522186985e1";
+            const url = `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${contractAddress}&vs_currencies=eth`;
+
+            try {
+                const response = await axios.get(url);
+                const price = response.data[contractAddress.toLowerCase()].eth;
+                document.getElementById('price').innerText = `${price} ETH`;
+            } catch (error) {
+                console.error("Erreur lors de la récupération du prix", error);
+                document.getElementById('price').innerText = "Erreur de chargement du prix";
+            }
+        }
+
+        fetchPrice();
+    </script>
+</body>
+</html>
