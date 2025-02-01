@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prix du CT20</title>
+    <script>
+        async function getCT20Price() {
+            const query = `
+            {
+                token(id: "0xfd655eb8fb0296deebfdfdc18a05a522186985e1") {
+                    derivedETH
+                }
+                bundle(id: "1") {
+                    ethPriceUSD
+                }
+            }`;
+
+            const response = await fetch("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query })
+            });
+
+            const data = await response.json();
+            const token = data.data.token;
+            const bundle = data.data.bundle;
+
+            if (token && bundle) {
+                const priceInETH = token.derivedETH;
+                const priceInUSD = priceInETH * bundle.ethPriceUSD;
+
+                document.getElementById("priceETH").textContent = priceInETH.toFixed(8) + " ETH";
+                document.getElementById("priceUSD").textContent = priceInUSD.toFixed(4) + " USD";
+            } else {
+                document.getElementById("priceETH").textContent = "Non disponible";
+                document.getElementById("priceUSD").textContent = "Non disponible";
+            }
+        }
+
+        window.onload = getCT20Price;
+    </script>
+</head>
+<body>
+    <h1>Prix du CT20</h1>
+    <p><strong>Prix en ETH :</strong> <span id="priceETH">Chargement...</span></p>
+    <p><strong>Prix en USD :</strong> <span id="priceUSD">Chargement...</span></p>
+</body>
+</html>
