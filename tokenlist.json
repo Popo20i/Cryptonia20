@@ -1,7 +1,8 @@
 {
 "name": "Cryptonia Token List",
-"logoURI": "https://raw.githubusercontent.com/Popo20i/Cryptonia20/main/images/logo.png",
-"keywords": ["cryptonia", "token", "CT20"],
+"timestamp": "2025-06-25T18:00:00Z",
+"version": { "major": 1, "minor": 0, "patch": 0 },
+"tags": {},
 "tokens": [
 {
 "chainId": 1,
@@ -9,12 +10,14 @@
 "name": "Cryptonia20",
 "symbol": "CT20",
 "decimals": 18,
-"logoURI": "https://raw.githubusercontent.com/Popo20i/Cryptonia20/main/images/logo.png"
+"logoURI": "https://tonsite.com/images/logo-ct20.png",
+"extensions": {
+"website": "https://cryptonia20.com",
+"social": {
+"twitter": "https://twitter.com/cryptonia20",
+"telegram": "https://t.me/cryptonia20"
 }
-],
-"version": {
-"major": 1,
-"minor": 0,
-"patch": 0
 }
+}
+]
 }
