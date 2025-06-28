@@ -40,21 +40,40 @@ body::after {
     to { background-position: -1000px 1000px; }
 }
 
-/* Contenu principal */
+/* Conteneur principal */
 .container {
     position: relative;
     z-index: 1;
     padding: 50px;
 }
 
-/* En-tête */
-header {
+/* ===== HEADER avec logo à gauche, texte au centre, image à droite ===== */
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 20px;
-    font-size: 2em;
-    font-weight: bold;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid #6c00ff;
 }
 
-/* Navigation */
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.illustration {
+    width: 160px;
+    height: auto;
+}
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* ===== NAVIGATION ===== */
 nav {
     margin-bottom: 20px;
 }
@@ -71,7 +90,7 @@ nav a:hover {
     color: #FFD700;
 }
 
-/* Section intro principale */
+/* ===== INTRO ===== */
 .intro {
     padding: 60px 20px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -91,7 +110,7 @@ nav a:hover {
     line-height: 1.6;
 }
 
-/* Bouton principal */
+/* ===== BOUTON ===== */
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -110,15 +129,7 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* Footer */
-footer {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    font-size: 14px;
-}
-
-/* ===== Section SWAP UNISWAP ===== */
+/* ===== SWAP UNISWAP ===== */
 .swap-section {
     background: rgba(0, 0, 0, 0.7);
     padding: 80px 20px;
@@ -163,4 +174,13 @@ footer {
 .swap-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    color: #cccccc;
 }
