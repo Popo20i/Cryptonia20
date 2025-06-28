@@ -56,6 +56,7 @@ body::after {
     gap: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     border-bottom: 2px solid #6c00ff;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -76,6 +77,15 @@ body::after {
 /* ===== NAVIGATION ===== */
 nav {
     margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
 }
 
 nav a {
