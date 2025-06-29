@@ -1,196 +1,180 @@
-/* Styles généraux */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-    background-color: black;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background-color: black;
 }
 
-/* Arrière-plan spatial fixe */
+/* Arrière-plan spatial */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://source.unsplash.com/1600x900/?space,stars,galaxy') no-repeat center center/cover;
-    z-index: -2;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://source.unsplash.com/1600x900/?space,stars,galaxy') no-repeat center center/cover;
+  z-index: -2;
 }
 
-/* Animation étoiles légères au-dessus */
 body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    opacity: 0.5;
-    z-index: -1;
-    animation: stars 100s linear infinite;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.5;
+  z-index: -1;
+  animation: stars 100s linear infinite;
 }
 
-/* Animation étoiles */
 @keyframes stars {
-    from { background-position: 0 0; }
-    to { background-position: -1000px 1000px; }
+  from { background-position: 0 0; }
+  to { background-position: -1000px 1000px; }
 }
 
-/* Conteneur principal */
-.container {
-    position: relative;
-    z-index: 1;
-    padding: 50px;
-}
-
-/* ===== HEADER avec logo à gauche, texte au centre, image à droite ===== */
 .header-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    gap: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-bottom: 2px solid #6c00ff;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid #6c00ff;
+  flex-wrap: wrap;
 }
 
 .logo {
-    width: 100px;
-    height: auto;
+  width: 100px;
+  height: auto;
 }
 
 .illustration {
-    width: 160px;
-    height: auto;
+  width: 160px;
+  height: auto;
+  display: block;
 }
 
 .header-text {
-    flex-grow: 1;
-    text-align: center;
+  flex-grow: 1;
+  text-align: center;
 }
 
-/* ===== NAVIGATION ===== */
 nav {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 nav li {
-    display: inline;
+  display: inline;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.2em;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1.2em;
+  transition: 0.3s;
 }
 
 nav a:hover {
-    color: #FFD700;
+  color: #FFD700;
 }
 
-/* ===== INTRO ===== */
 .intro {
-    padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    margin: 20px auto;
-    max-width: 800px;
-    border-radius: 12px;
+  padding: 60px 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 12px;
 }
 
 .intro h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px #9f00ff;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #9f00ff;
 }
 
 .intro p {
-    font-size: 18px;
-    line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
-/* ===== BOUTON ===== */
 .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #ff00ff, #6c00ff);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 12px rgba(255, 0, 255, 0.5);
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #ff00ff, #6c00ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 12px rgba(255, 0, 255, 0.5);
 }
 
 .btn:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-/* ===== SWAP UNISWAP ===== */
 .swap-section {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 80px 20px;
-    color: white;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-top: 2px solid #6c00ff;
-    border-bottom: 2px solid #6c00ff;
-    backdrop-filter: blur(4px);
-    margin-top: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+  border-top: 2px solid #6c00ff;
+  border-bottom: 2px solid #6c00ff;
+  backdrop-filter: blur(4px);
+  margin-top: 50px;
 }
 
 .swap-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px #b300ff;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #b300ff;
 }
 
 .swap-text {
-    font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-    color: #ccccff;
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  color: #ccccff;
 }
 
 .swap-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .swap-button {
-    padding: 16px 32px;
-    background: linear-gradient(135deg, #6c00ff, #b300ff);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #6c00ff, #b300ff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .swap-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
 }
 
-/* ===== FOOTER ===== */
 footer {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    font-size: 14px;
-    color: #cccccc;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  color: #cccccc;
 }
