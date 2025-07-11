@@ -1,4 +1,4 @@
- name: 🚀 Validate Cryptonia20 (CT20) Token List JSON
+name: 🚀 Validate Cryptonia20 (CT20) Token List JSON
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - 'src/cryptonia20.tokenlist.json'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   validate-json:
