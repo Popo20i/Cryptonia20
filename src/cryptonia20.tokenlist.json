@@ -14,7 +14,7 @@
 "name": "Cryptonia20",
 "symbol": "CT20",
 "decimals": 18,
-"logoURI": https://raw.githubusercontent.com/Popo20i/Cryptonia20/main/logo-ct20.png
+"logoURI": https://raw.githubusercontent.com/Popo20i/Cryptonia20/main/src/cryptonia20.tokenlist.json
 "extensions": {
 "website": "https://popo20i.github.io/Cryptonia20/",
 "social": {
