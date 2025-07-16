@@ -12,6 +12,7 @@ on:
 jobs:
   validate-json:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout repository
@@ -19,34 +20,85 @@ jobs:
 
       - name: Validate JSON syntax
         run: |
-          echo "✅ Vérification de la syntaxe JSON"
+          echo "✅ Validating JSON syntax..."
           python3 -m json.tool src/cryptonia20.tokenlist.json > /dev/null
+          echo "Syntax is valid."
 
-      - name: Validate required fields
+      - name: Validate required fields and structure
         run: |
-          echo "✅ Vérification des champs obligatoires"
+          echo "🔍 Checking required fields and extensions..."
           python3 <<'EOF'
           import json, sys
 
-          path = 'src/cryptonia20.tokenlist.json'
-
-          with open(path) as f:
-              data = json.load(f)
-
-          for field in ["name", "timestamp", "version", "tokens"]:
-              if field not in data:
-                  print(f"❌ Champ manquant: {field}")
-                  sys.exit(1)
-
-          if not isinstance(data["tokens"], list) or len(data["tokens"]) == 0:
-              print("❌ Le tableau 'tokens' doit être une liste non vide.")
+          try:
+              with open('src/cryptonia20.tokenlist.json') as f:
+                  data = json.load(f)
+          except Exception as e:
+              print(f"❌ Failed to load JSON: {str(e)}")
               sys.exit(1)
 
-          token = data["tokens"][0]
-          for field in ["chainId", "address", "name", "symbol", "decimals"]:
-              if field not in token:
-                  print(f"❌ Champ manquant dans le premier token: {field}")
+          # Required root fields
+          required_root = ["name", "timestamp", "version", "tokens"]
+          for field in required_root:
+              if field not in data:
+                  print(f"❌ Missing root field: {field}")
                   sys.exit(1)
 
-          print("🎉 JSON valide et tous les champs requis sont présents.")
+          # Version format
+          if not all(k in data["version"] for k in ["major", "minor", "patch"]):
+              print("❌ Version must have major, minor, and patch fields")
+              sys.exit(1)
+
+          # Tokens validation
+          if not isinstance(data["tokens"], list):
+              print("❌ 'tokens' must be a list")
+              sys.exit(1)
+
+          if len(data["tokens"]) == 0:
+              print("❌ 'tokens' list cannot be empty")
+              sys.exit(1)
+
+          # Token fields validation
+          required_token_fields = ["chainId", "address", "name", "symbol", "decimals"]
+          for token in data["tokens"]:
+              for field in required_token_fields:
+                  if field not in token:
+                      print(f"❌ Missing token field '{field}' in token: {token.get('symbol', 'unknown')}")
+                      sys.exit(1)
+
+              # Validate address format (basic check)
+              if not token["address"].startswith("0x") or len(token["address"]) != 42:
+                  print(f"❌ Invalid address format for token: {token['symbol']}")
+                  sys.exit(1)
+
+              # Validate decimals is a number
+              if not isinstance(token["decimals"], int):
+                  print(f"❌ Decimals must be an integer for token: {token['symbol']}")
+                  sys.exit(1)
+
+          print("🎉 All checks passed! JSON structure is valid.")
+          EOF
+
+      - name: Validate logoURI accessibility (optional)
+        if: always()  # Runs even if previous steps fail
+        run: |
+          echo "🖼️ Checking logoURI accessibility..."
+          python3 <<'EOF'
+          import requests
+          import json
+
+          try:
+              with open('src/cryptonia20.tokenlist.json') as f:
+                  data = json.load(f)
+              
+              for token in data["tokens"]:
+                  if "logoURI" in token:
+                      try:
+                          response = requests.head(token["logoURI"], timeout=10)
+                          if response.status_code != 200:
+                              print(f"⚠️ logoURI not accessible (HTTP {response.status_code}): {token['logoURI']}")
+                      except Exception as e:
+                          print(f"⚠️ Could not verify logoURI: {str(e)}")
+          except:
+              pass  # Skip if JSON is invalid
           EOF
